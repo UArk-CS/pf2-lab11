@@ -3,8 +3,10 @@
 #include <iostream>
 using namespace std;
 
-// Global constants
+// Global variables
 const int ARRAY_SIZE = 1000;
+int COMPARE_COUNTER = 0;
+int MOVE_COUNTER = 0;
 
 // Declare functions
 void create_random_data(int data[], int count, int range);
@@ -18,8 +20,36 @@ int main() {
 
     int data[ARRAY_SIZE];
 
+    // Random data
     create_random_data(data, ARRAY_SIZE, ARRAY_SIZE - 1);
-    merge_sort(data, 0, ARRAY_SIZE -1);
+    insertion_sort(data, 0, ARRAY_SIZE - 1);
+    cout << "Random Data: " << endl;
+    cout << "Compares: " << COMPARE_COUNTER << endl;
+    cout << "Moves: " << MOVE_COUNTER << endl;
+    cout << endl;
+
+    // Reset counters
+    COMPARE_COUNTER = 0;
+    MOVE_COUNTER = 0;
+
+    // Mostly sorted data
+    create_mostly_sorted_data(data, ARRAY_SIZE, ARRAY_SIZE / 10);
+    insertion_sort(data, 0, ARRAY_SIZE - 1);
+    cout << "Mostly Sorted Data: " << endl;
+    cout << "Compares: " << COMPARE_COUNTER << endl;
+    cout << "Moves: " << MOVE_COUNTER << endl;
+    cout << endl;
+
+
+    // Reset counters
+    COMPARE_COUNTER = 0;
+    MOVE_COUNTER = 0;
+
+    insertion_sort(data, 0, ARRAY_SIZE - 1);
+    cout << "Sorted Data: " << endl;
+    cout << "Compares: " << COMPARE_COUNTER << endl;
+    cout << "Moves: " << MOVE_COUNTER << endl;
+    cout << endl;
 
     return 0;
 
@@ -54,6 +84,7 @@ void insertion_sort(int data[], int low, int high)
     // Insert each element of unsorted list into sorted list
     for (int unsorted = low+1; unsorted <= high; unsorted++)
     {
+
         // Select unsorted value to be inserted
         int value = data[unsorted];
         int posn = unsorted;
@@ -61,12 +92,19 @@ void insertion_sort(int data[], int low, int high)
         // Make room for new data value
         while ((posn > 0) && (data[posn - 1] > value))
         {
+
+            COMPARE_COUNTER++;
+
             data[posn] = data[posn - 1];
             posn--;
+
         }
 
         // Put new value into array
         data[posn] = value;
+
+        MOVE_COUNTER++;
+
     }
 }
 
