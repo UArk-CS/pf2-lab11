@@ -3,6 +3,9 @@
 #include <iostream>
 using namespace std;
 
+// Global constants
+const int ARRAY_SIZE = 1000;
+
 // Declare functions
 void create_random_data(int data[], int count, int range);
 void create_mostly_sorted_data(int data[], int count, int swaps);
@@ -12,6 +15,11 @@ void quick_sort(int data[], int low, int high);
 void merge_sort(int data[], int low, int high);
 
 int main() {
+
+    int data[ARRAY_SIZE];
+
+    create_random_data(data, ARRAY_SIZE, ARRAY_SIZE - 1);
+    merge_sort(data, 0, ARRAY_SIZE -1);
 
     return 0;
 
