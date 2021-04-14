@@ -20,6 +20,10 @@ int main() {
 
     int data[ARRAY_SIZE];
 
+    // INSERTION SORT TESTS
+    cout << "INSERTION SORT TESTS" << endl;
+    cout << endl;
+
     // Random data
     create_random_data(data, ARRAY_SIZE, ARRAY_SIZE - 1);
     insertion_sort(data, 0, ARRAY_SIZE - 1);
@@ -46,6 +50,41 @@ int main() {
     MOVE_COUNTER = 0;
 
     insertion_sort(data, 0, ARRAY_SIZE - 1);
+    cout << "Sorted Data: " << endl;
+    cout << "Compares: " << COMPARE_COUNTER << endl;
+    cout << "Moves: " << MOVE_COUNTER << endl;
+    cout << endl;
+
+    // MERGE SORT TESTS
+    cout << "MERGE SORT TESTS" << endl;
+    cout << endl;
+
+    // Random data
+    create_random_data(data, ARRAY_SIZE, ARRAY_SIZE - 1);
+    merge_sort(data, 0, ARRAY_SIZE - 1);
+    cout << "Random Data: " << endl;
+    cout << "Compares: " << COMPARE_COUNTER << endl;
+    cout << "Moves: " << MOVE_COUNTER << endl;
+    cout << endl;
+
+    // Reset counters
+    COMPARE_COUNTER = 0;
+    MOVE_COUNTER = 0;
+
+    // Mostly sorted data
+    create_mostly_sorted_data(data, ARRAY_SIZE, ARRAY_SIZE / 10);
+    merge_sort(data, 0, ARRAY_SIZE - 1);
+    cout << "Mostly Sorted Data: " << endl;
+    cout << "Compares: " << COMPARE_COUNTER << endl;
+    cout << "Moves: " << MOVE_COUNTER << endl;
+    cout << endl;
+
+
+    // Reset counters
+    COMPARE_COUNTER = 0;
+    MOVE_COUNTER = 0;
+
+    merge_sort(data, 0, ARRAY_SIZE - 1);
     cout << "Sorted Data: " << endl;
     cout << "Compares: " << COMPARE_COUNTER << endl;
     cout << "Moves: " << MOVE_COUNTER << endl;
@@ -175,23 +214,49 @@ void merge_sort(int data[], int low, int high)
         // Merge smallest data elements into copy array
         while (index1 <= mid && index2 <= high)
         {
-            if (data[index1] < data[index2])
+            if (data[index1] < data[index2]) {
+
+                COMPARE_COUNTER++;
+
                 copy[index++] = data[index1++];
-            else
+
+                MOVE_COUNTER++;
+
+            } else {
+
                 copy[index++] = data[index2++];
+
+                MOVE_COUNTER++;
+
+            }
         }
 
         // Copy any remaining entries from the first half
-        while (index1 <= mid)
+        while (index1 <= mid) {
+
             copy[index++] = data[index1++];
 
+            MOVE_COUNTER++;
+
+        }
+
         // Copy any remaining entries from the second half
-        while (index2 <= high)
+        while (index2 <= high) {
+
             copy[index++] = data[index2++];
 
+            MOVE_COUNTER++;
+
+        }
+
         // Copy data back from the temporary array
-        for (index = 0; index < range; index++)
+        for (index = 0; index < range; index++) {
+
             data[low + index] = copy[index];
+
+            MOVE_COUNTER++;
+
+        }
         delete []copy;
     }
 }
