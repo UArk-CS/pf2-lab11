@@ -121,6 +121,54 @@ int main() {
     // Reset array size
     ARRAY_SIZE = 1000;
 
+    // QUICK SORT TESTS
+    cout << "QUICK SORT TESTS" << endl;
+    cout << endl;
+
+    for (int i = 0; i < 3; i++) {
+
+        cout << "Array Size: " << ARRAY_SIZE << endl;
+        cout << endl;
+
+        // Random data
+        create_random_data(data, ARRAY_SIZE, ARRAY_SIZE - 1);
+        quick_sort(data, 0, ARRAY_SIZE - 1);
+        cout << "Random Data: " << endl;
+        cout << "Compares: " << COMPARE_COUNTER << endl;
+        cout << "Moves: " << MOVE_COUNTER << endl;
+        cout << endl;
+
+        // Reset counters
+        COMPARE_COUNTER = 0;
+        MOVE_COUNTER = 0;
+
+        // Mostly sorted data
+        create_mostly_sorted_data(data, ARRAY_SIZE, ARRAY_SIZE / 10);
+        quick_sort(data, 0, ARRAY_SIZE - 1);
+        cout << "Mostly Sorted Data: " << endl;
+        cout << "Compares: " << COMPARE_COUNTER << endl;
+        cout << "Moves: " << MOVE_COUNTER << endl;
+        cout << endl;
+
+
+        // Reset counters
+        COMPARE_COUNTER = 0;
+        MOVE_COUNTER = 0;
+
+        quick_sort(data, 0, ARRAY_SIZE - 1);
+        cout << "Sorted Data: " << endl;
+        cout << "Compares: " << COMPARE_COUNTER << endl;
+        cout << "Moves: " << MOVE_COUNTER << endl;
+        cout << endl;
+
+        // Reset counters
+        COMPARE_COUNTER = 0;
+        MOVE_COUNTER = 0;
+
+        ARRAY_SIZE /= 10;
+
+    }
+
     return 0;
 
 }
@@ -204,23 +252,39 @@ void partition(int data[], int low, int high, int &mid)
     while (left < right)
     {
         // Scan left to right
-        while ((left < right) && (data[left] < pivot))
+        while ((left < right) && (data[left] < pivot)) {
+
             left++;
 
+            COMPARE_COUNTER++;
+
+        }
+
         // Scan right to left
-        while ((left < right) && (data[right] >= pivot))
+        while ((left < right) && (data[right] >= pivot)) {
+
             right--;
+
+            COMPARE_COUNTER++;
+
+        }
 
         // Swap data values
         int temp = data[left];
         data[left] = data[right];
         data[right] = temp;
+
+        MOVE_COUNTER += 2;
+
     }
 
     // Swap pivot to mid
     mid = left;
     data[high] = data[mid];
     data[mid] = pivot;
+
+    MOVE_COUNTER += 2;
+
 }
 
 void merge_sort(int data[], int low, int high)
