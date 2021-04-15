@@ -228,17 +228,27 @@ void insertion_sort(int data[], int low, int high)
 
 void quick_sort(int data[], int low, int high)
 {
-    // Check terminating condition
-    if (low < high)
-    {
-        // Partition data into two parts
-        int mid = 0;
-        partition(data, low, high, mid);
 
-        // Recursive calls to sort array
-        quick_sort(data, low, mid - 1);
-        quick_sort(data, mid + 1, high);
+    if (high <= 100) {
+
+        insertion_sort(data, low, high);
+
+    } else {
+
+        // Check terminating condition
+        if (low < high)
+        {
+            // Partition data into two parts
+            int mid = 0;
+            partition(data, low, high, mid);
+
+            // Recursive calls to sort array
+            quick_sort(data, low, mid - 1);
+            quick_sort(data, mid + 1, high);
+        }
+
     }
+
 }
 
 void partition(int data[], int low, int high, int &mid)
