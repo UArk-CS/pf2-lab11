@@ -4,7 +4,7 @@
 using namespace std;
 
 // Global variables
-const int ARRAY_SIZE = 1000;
+int ARRAY_SIZE = 1000;
 int COMPARE_COUNTER = 0;
 int MOVE_COUNTER = 0;
 
@@ -24,71 +24,102 @@ int main() {
     cout << "INSERTION SORT TESTS" << endl;
     cout << endl;
 
-    // Random data
-    create_random_data(data, ARRAY_SIZE, ARRAY_SIZE - 1);
-    insertion_sort(data, 0, ARRAY_SIZE - 1);
-    cout << "Random Data: " << endl;
-    cout << "Compares: " << COMPARE_COUNTER << endl;
-    cout << "Moves: " << MOVE_COUNTER << endl;
-    cout << endl;
+    for (int i = 0; i < 3; i++) {
 
-    // Reset counters
-    COMPARE_COUNTER = 0;
-    MOVE_COUNTER = 0;
+        cout << "Array Size: " << ARRAY_SIZE << endl;
+        cout << endl;
 
-    // Mostly sorted data
-    create_mostly_sorted_data(data, ARRAY_SIZE, ARRAY_SIZE / 10);
-    insertion_sort(data, 0, ARRAY_SIZE - 1);
-    cout << "Mostly Sorted Data: " << endl;
-    cout << "Compares: " << COMPARE_COUNTER << endl;
-    cout << "Moves: " << MOVE_COUNTER << endl;
-    cout << endl;
+        // Random data
+        create_random_data(data, ARRAY_SIZE, ARRAY_SIZE - 1);
+        insertion_sort(data, 0, ARRAY_SIZE - 1);
+        cout << "Random Data: " << endl;
+        cout << "Compares: " << COMPARE_COUNTER << endl;
+        cout << "Moves: " << MOVE_COUNTER << endl;
+        cout << endl;
 
+        // Reset counters
+        COMPARE_COUNTER = 0;
+        MOVE_COUNTER = 0;
 
-    // Reset counters
-    COMPARE_COUNTER = 0;
-    MOVE_COUNTER = 0;
+        // Mostly sorted data
+        create_mostly_sorted_data(data, ARRAY_SIZE, ARRAY_SIZE / 10);
+        insertion_sort(data, 0, ARRAY_SIZE - 1);
+        cout << "Mostly Sorted Data: " << endl;
+        cout << "Compares: " << COMPARE_COUNTER << endl;
+        cout << "Moves: " << MOVE_COUNTER << endl;
+        cout << endl;
 
-    insertion_sort(data, 0, ARRAY_SIZE - 1);
-    cout << "Sorted Data: " << endl;
-    cout << "Compares: " << COMPARE_COUNTER << endl;
-    cout << "Moves: " << MOVE_COUNTER << endl;
-    cout << endl;
+        // Reset counters
+        COMPARE_COUNTER = 0;
+        MOVE_COUNTER = 0;
+
+        insertion_sort(data, 0, ARRAY_SIZE - 1);
+        cout << "Sorted Data: " << endl;
+        cout << "Compares: " << COMPARE_COUNTER << endl;
+        cout << "Moves: " << MOVE_COUNTER << endl;
+        cout << endl;
+
+        // Reset counters
+        COMPARE_COUNTER = 0;
+        MOVE_COUNTER = 0;
+
+        ARRAY_SIZE /= 10;
+
+    }
+
+    // Reset array size
+    ARRAY_SIZE = 1000;
 
     // MERGE SORT TESTS
     cout << "MERGE SORT TESTS" << endl;
     cout << endl;
 
-    // Random data
-    create_random_data(data, ARRAY_SIZE, ARRAY_SIZE - 1);
-    merge_sort(data, 0, ARRAY_SIZE - 1);
-    cout << "Random Data: " << endl;
-    cout << "Compares: " << COMPARE_COUNTER << endl;
-    cout << "Moves: " << MOVE_COUNTER << endl;
-    cout << endl;
+    for (int i = 0; i < 3; i++) {
 
-    // Reset counters
-    COMPARE_COUNTER = 0;
-    MOVE_COUNTER = 0;
+        cout << "Array Size: " << ARRAY_SIZE << endl;
+        cout << endl;
 
-    // Mostly sorted data
-    create_mostly_sorted_data(data, ARRAY_SIZE, ARRAY_SIZE / 10);
-    merge_sort(data, 0, ARRAY_SIZE - 1);
-    cout << "Mostly Sorted Data: " << endl;
-    cout << "Compares: " << COMPARE_COUNTER << endl;
-    cout << "Moves: " << MOVE_COUNTER << endl;
-    cout << endl;
+        // Random data
+        create_random_data(data, ARRAY_SIZE, ARRAY_SIZE - 1);
+        merge_sort(data, 0, ARRAY_SIZE - 1);
+        cout << "Random Data: " << endl;
+        cout << "Compares: " << COMPARE_COUNTER << endl;
+        cout << "Moves: " << MOVE_COUNTER << endl;
+        cout << endl;
+
+        // Reset counters
+        COMPARE_COUNTER = 0;
+        MOVE_COUNTER = 0;
+
+        // Mostly sorted data
+        create_mostly_sorted_data(data, ARRAY_SIZE, ARRAY_SIZE / 10);
+        merge_sort(data, 0, ARRAY_SIZE - 1);
+        cout << "Mostly Sorted Data: " << endl;
+        cout << "Compares: " << COMPARE_COUNTER << endl;
+        cout << "Moves: " << MOVE_COUNTER << endl;
+        cout << endl;
 
 
-    // Reset counters
-    COMPARE_COUNTER = 0;
-    MOVE_COUNTER = 0;
+        // Reset counters
+        COMPARE_COUNTER = 0;
+        MOVE_COUNTER = 0;
 
-    merge_sort(data, 0, ARRAY_SIZE - 1);
-    cout << "Sorted Data: " << endl;
-    cout << "Compares: " << COMPARE_COUNTER << endl;
-    cout << "Moves: " << MOVE_COUNTER << endl;
-    cout << endl;
+        merge_sort(data, 0, ARRAY_SIZE - 1);
+        cout << "Sorted Data: " << endl;
+        cout << "Compares: " << COMPARE_COUNTER << endl;
+        cout << "Moves: " << MOVE_COUNTER << endl;
+        cout << endl;
+
+        // Reset counters
+        COMPARE_COUNTER = 0;
+        MOVE_COUNTER = 0;
+
+        ARRAY_SIZE /= 10;
+
+    }
+
+    // Reset array size
+    ARRAY_SIZE = 1000;
 
     return 0;
 
